@@ -4,240 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Listening Player — German Tutor</title>
-<style>
-  :root{
-    --paper:#EEF1F1; --panel:#E4E9E8; --ink:#1B2027; --ink-dim:#5B6672; --hairline:rgba(27,32,39,0.14);
-    --accent:#B5701F; --accent-soft:rgba(181,112,31,0.14);
-    --voice-f:#8A5FB8; --voice-b:#2E7D8C;
-    --font-display:'Bahnschrift','DIN Alternate','Segoe UI Semibold',sans-serif;
-    --font-body:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
-    --font-mono:'Consolas','SF Mono',ui-monospace,monospace;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --paper:#12151A; --panel:#181D24; --ink:#E7EAEE; --ink-dim:#93A0AC; --hairline:rgba(231,234,238,0.14); --accent:#E0923F; --accent-soft:rgba(224,146,63,0.16); --voice-f:#B48EDC; --voice-b:#4FB8C9; }
-  }
-  *{box-sizing:border-box;}
-  body{background:var(--paper);color:var(--ink);font-family:var(--font-body);margin:0;padding:0;font-size:15px;}
-  .wrap{max-width:640px;margin:0 auto;padding:32px 20px 70px;}
-
-  .masthead{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:26px;}
-  .eyebrow{font-family:var(--font-display);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin:0 0 6px;}
-  h1{font-family:var(--font-display);font-weight:600;font-size:24px;margin:0 0 6px;text-wrap:balance;}
-  .subline{font-size:12.5px;color:var(--ink-dim);max-width:56ch;margin:0;}
-
-  .week-head{
-    font-family:var(--font-display);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;
-    color:var(--ink-dim);margin:34px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--hairline);
-    display:flex;justify-content:space-between;align-items:baseline;
-  }
-  .week-head span.count{font-family:var(--font-mono);color:var(--ink-dim);text-transform:none;letter-spacing:0;font-size:11.5px;}
-
-  .card{background:var(--panel);border:1px solid var(--hairline);border-radius:6px;padding:16px 18px;margin-bottom:14px;}
-  .card-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;}
-  .card-title{font-family:var(--font-display);font-size:14.5px;font-weight:600;}
-  .id-badge{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-dim);}
-  .voice-badge{font-family:var(--font-mono);font-size:10px;letter-spacing:0.03em;padding:2px 7px;border-radius:10px;white-space:nowrap;}
-  .voice-badge.f{color:var(--voice-f);background:color-mix(in srgb, var(--voice-f) 16%, transparent);border:1px solid var(--voice-f);}
-  .voice-badge.b{color:var(--voice-b);background:color-mix(in srgb, var(--voice-b) 16%, transparent);border:1px solid var(--voice-b);}
-
-  audio{width:100%;margin-bottom:12px;}
-  .speed-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
-  .speed-row .speed-label{font-family:var(--font-display);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-dim);white-space:nowrap;margin-right:2px;}
-  .speed-btn{
-    font-family:var(--font-mono);font-size:12.5px;font-variant-numeric:tabular-nums;
-    background:none;border:1px solid var(--hairline);color:var(--ink-dim);
-    border-radius:4px;padding:6px 12px;cursor:pointer;
-  }
-  .speed-btn.active{color:var(--accent);border-color:var(--accent);background:var(--accent-soft);font-weight:600;}
-
-  .reveal{font-family:var(--font-display);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:none;border:1px solid var(--hairline);color:var(--ink);border-radius:4px;padding:7px 11px;cursor:pointer;}
-  .reveal:focus-visible, .speed-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
-  .questions{margin-top:12px;font-size:13px;color:var(--ink-dim);display:none;}
-  .questions.show{display:block;}
-  .questions ol{margin:0;padding-left:20px;}
-  .questions li{margin-bottom:5px;}
-
-  .foot-note{margin-top:30px;padding-top:16px;border-top:1px dashed var(--hairline);font-size:11.5px;color:var(--ink-dim);}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
   <div class="masthead">
     <p class="eyebrow">Listening Player · Real Neural TTS</p>
     <h1>Weekly Listening Scripts</h1>
-    <p class="subline">Google Cloud neural German voices, served as real audio files — each script only downloads when you tap play.</p>
+    <p class="subline">Google Cloud neural German voices, served as real audio files. Pick a week to start.</p>
   </div>
 
-  <div class="week-head">Week 05 — Housing &amp; Moving <span class="count">4 scripts</span></div>
-
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0501</span> <span class="card-title">New Flat in Schwabing</span></div><span class="voice-badge f">NEURAL2-F</span></div>
-    <audio data-player controls preload="none"><source src="audio/0501.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
+  <a class="week-card" href="weeks/week-05.html">
+    <div class="wk-row">
+      <div>
+        <div class="wk-num">WEEK 05</div>
+        <div class="wk-theme">Housing &amp; Moving</div>
+      </div>
+      <div class="wk-count">4 scripts</div>
     </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>In which neighbourhood is the new apartment?</li>
-      <li>How big is the apartment?</li>
-      <li>What feature does the living room have?</li>
-      <li>When is the speaker moving in?</li>
-    </ol></div>
-  </div>
+  </a>
 
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0502</span> <span class="card-title">Calling About a Listing</span></div><span class="voice-badge f">NEURAL2-F</span></div>
-    <audio data-player controls preload="none"><source src="audio/0502.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
+  <a class="week-card" href="weeks/week-06.html">
+    <div class="wk-row">
+      <div>
+        <div class="wk-num">WEEK 06</div>
+        <div class="wk-theme">Bureaucracy</div>
+      </div>
+      <div class="wk-count">4 scripts</div>
     </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>Why is Thomas calling?</li>
-      <li>How many people does he need the apartment for?</li>
-      <li>When is Thomas NOT available for a viewing?</li>
-      <li>What does Thomas want to arrange at the end of the call?</li>
-    </ol></div>
-  </div>
+  </a>
 
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0503</span> <span class="card-title">Apartment Tour</span></div><span class="voice-badge b">NEURAL2-B</span></div>
-    <audio data-player controls preload="none"><source src="audio/0503.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
-    </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>Where is the sofa?</li>
-      <li>Where is the bathroom?</li>
-      <li>Where is the cellar?</li>
-      <li>What does the speaker plan to use the second room for?</li>
-    </ol></div>
-  </div>
-
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0504</span> <span class="card-title">Life in a WG</span></div><span class="voice-badge f">NEURAL2-F</span></div>
-    <audio data-player controls preload="none"><source src="audio/0504.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
-    </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>How many flatmates live in the WG?</li>
-      <li>How many rooms does the WG have in total?</li>
-      <li>How much does each person pay in rent?</li>
-      <li>What is the one house rule?</li>
-    </ol></div>
-  </div>
-
-  <div class="week-head">Week 06 — Bureaucracy <span class="count">4 scripts</span></div>
-
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0601</span> <span class="card-title">Booking a Bürgeramt Appointment</span></div><span class="voice-badge b">NEURAL2-B</span></div>
-    <audio data-player controls preload="none"><source src="audio/0601.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
-    </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>Why is the caller contacting the Bürgeramt?</li>
-      <li>How long does she have to wait for an appointment?</li>
-      <li>What day and time is her appointment?</li>
-      <li>Name two documents she needs to bring.</li>
-    </ol></div>
-  </div>
-
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0602</span> <span class="card-title">Waiting Room Queue</span></div><span class="voice-badge f">NEURAL2-F</span></div>
-    <audio data-player controls preload="none"><source src="audio/0602.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
-    </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>What time does the speaker arrive at the Bürgeramt?</li>
-      <li>What is their queue number?</li>
-      <li>Which number is currently being served?</li>
-      <li>How long does the speaker have to wait?</li>
-    </ol></div>
-  </div>
-
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0603</span> <span class="card-title">Wrong Form</span></div><span class="voice-badge b">NEURAL2-B</span></div>
-    <audio data-player controls preload="none"><source src="audio/0603.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
-    </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>What does the speaker want to do at the office?</li>
-      <li>What problem does the official identify?</li>
-      <li>Which form does the speaker actually need?</li>
-      <li>What does the official allow the speaker to do?</li>
-    </ol></div>
-  </div>
-
-  <div class="card" data-card>
-    <div class="card-head"><div><span class="id-badge">0604</span> <span class="card-title">Closed for a Holiday</span></div><span class="voice-badge f">NEURAL2-F</span></div>
-    <audio data-player controls preload="none"><source src="audio/0604.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row" data-speedrow>
-      <span class="speed-label">Speed</span>
-      <button class="speed-btn" data-speed="0.6">0.6x</button>
-      <button class="speed-btn" data-speed="0.8">0.8x</button>
-      <button class="speed-btn active" data-speed="1">1x</button>
-    </div>
-    <button class="reveal" data-reveal>Show questions</button>
-    <div class="questions" data-questions><ol>
-      <li>Why was the speaker unable to complete their task today?</li>
-      <li>How long did the speaker travel to get there?</li>
-      <li>When is the next available appointment?</li>
-      <li>What does the speaker say they will do differently next time?</li>
-    </ol></div>
-  </div>
-
-  <div class="foot-note">All 8 scripts are monologues, so each got one randomly-assigned voice. Future dialogue scripts (marked with A:/B: turns) will split voices per speaker within the same card.</div>
+  <div class="foot-note">New weeks get added here as they're generated — this page will grow week by week alongside the syllabus.</div>
 </div>
-
-<script>
-  document.querySelectorAll('[data-card]').forEach(function(card){
-    var audio = card.querySelector('[data-player]');
-    var speedBtns = card.querySelectorAll('.speed-btn');
-    var revealBtn = card.querySelector('[data-reveal]');
-    var questions = card.querySelector('[data-questions]');
-
-    speedBtns.forEach(function(btn){
-      btn.addEventListener('click', function(){
-        audio.playbackRate = parseFloat(btn.dataset.speed);
-        speedBtns.forEach(function(b){ b.classList.remove('active'); });
-        btn.classList.add('active');
-      });
-    });
-    revealBtn.addEventListener('click', function(){
-      questions.classList.toggle('show');
-      revealBtn.textContent = questions.classList.contains('show') ? 'Hide questions' : 'Show questions';
-    });
-  });
-</script>
 </body>
 </html>

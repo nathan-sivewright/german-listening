@@ -41,13 +41,17 @@
   .voice-badge.b{color:var(--voice-b);background:color-mix(in srgb, var(--voice-b) 16%, transparent);border:1px solid var(--voice-b);}
 
   audio{width:100%;margin-bottom:12px;}
-  .speed-row{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
-  .speed-row label{font-family:var(--font-display);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-dim);white-space:nowrap;}
-  input[type="range"]{flex:1;accent-color:var(--accent);}
-  .speed-val{font-family:var(--font-mono);font-variant-numeric:tabular-nums;font-size:12.5px;width:36px;text-align:right;}
+  .speed-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+  .speed-row .speed-label{font-family:var(--font-display);font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-dim);white-space:nowrap;margin-right:2px;}
+  .speed-btn{
+    font-family:var(--font-mono);font-size:12.5px;font-variant-numeric:tabular-nums;
+    background:none;border:1px solid var(--hairline);color:var(--ink-dim);
+    border-radius:4px;padding:6px 12px;cursor:pointer;
+  }
+  .speed-btn.active{color:var(--accent);border-color:var(--accent);background:var(--accent-soft);font-weight:600;}
 
   .reveal{font-family:var(--font-display);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;background:none;border:1px solid var(--hairline);color:var(--ink);border-radius:4px;padding:7px 11px;cursor:pointer;}
-  .reveal:focus-visible, input[type="range"]:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  .reveal:focus-visible, .speed-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   .questions{margin-top:12px;font-size:13px;color:var(--ink-dim);display:none;}
   .questions.show{display:block;}
   .questions ol{margin:0;padding-left:20px;}
@@ -69,7 +73,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0501</span> <span class="card-title">New Flat in Schwabing</span></div><span class="voice-badge f">NEURAL2-F</span></div>
     <audio data-player controls preload="none"><source src="audio/0501.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>In which neighbourhood is the new apartment?</li>
@@ -82,7 +91,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0502</span> <span class="card-title">Calling About a Listing</span></div><span class="voice-badge f">NEURAL2-F</span></div>
     <audio data-player controls preload="none"><source src="audio/0502.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>Why is Thomas calling?</li>
@@ -95,7 +109,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0503</span> <span class="card-title">Apartment Tour</span></div><span class="voice-badge b">NEURAL2-B</span></div>
     <audio data-player controls preload="none"><source src="audio/0503.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>Where is the sofa?</li>
@@ -108,7 +127,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0504</span> <span class="card-title">Life in a WG</span></div><span class="voice-badge f">NEURAL2-F</span></div>
     <audio data-player controls preload="none"><source src="audio/0504.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>How many flatmates live in the WG?</li>
@@ -123,7 +147,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0601</span> <span class="card-title">Booking a Bürgeramt Appointment</span></div><span class="voice-badge b">NEURAL2-B</span></div>
     <audio data-player controls preload="none"><source src="audio/0601.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>Why is the caller contacting the Bürgeramt?</li>
@@ -136,7 +165,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0602</span> <span class="card-title">Waiting Room Queue</span></div><span class="voice-badge f">NEURAL2-F</span></div>
     <audio data-player controls preload="none"><source src="audio/0602.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>What time does the speaker arrive at the Bürgeramt?</li>
@@ -149,7 +183,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0603</span> <span class="card-title">Wrong Form</span></div><span class="voice-badge b">NEURAL2-B</span></div>
     <audio data-player controls preload="none"><source src="audio/0603.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>What does the speaker want to do at the office?</li>
@@ -162,7 +201,12 @@
   <div class="card" data-card>
     <div class="card-head"><div><span class="id-badge">0604</span> <span class="card-title">Closed for a Holiday</span></div><span class="voice-badge f">NEURAL2-F</span></div>
     <audio data-player controls preload="none"><source src="audio/0604.mp3" type="audio/mpeg"></audio>
-    <div class="speed-row"><label>Speed</label><input type="range" data-rate min="0.6" max="1.25" step="0.05" value="1"><span class="speed-val" data-rateval>1.00x</span></div>
+    <div class="speed-row" data-speedrow>
+      <span class="speed-label">Speed</span>
+      <button class="speed-btn" data-speed="0.6">0.6x</button>
+      <button class="speed-btn" data-speed="0.8">0.8x</button>
+      <button class="speed-btn active" data-speed="1">1x</button>
+    </div>
     <button class="reveal" data-reveal>Show questions</button>
     <div class="questions" data-questions><ol>
       <li>Why was the speaker unable to complete their task today?</li>
@@ -178,14 +222,16 @@
 <script>
   document.querySelectorAll('[data-card]').forEach(function(card){
     var audio = card.querySelector('[data-player]');
-    var rate = card.querySelector('[data-rate]');
-    var rateVal = card.querySelector('[data-rateval]');
+    var speedBtns = card.querySelectorAll('.speed-btn');
     var revealBtn = card.querySelector('[data-reveal]');
     var questions = card.querySelector('[data-questions]');
 
-    rate.addEventListener('input', function(){
-      audio.playbackRate = parseFloat(rate.value);
-      rateVal.textContent = parseFloat(rate.value).toFixed(2) + 'x';
+    speedBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        audio.playbackRate = parseFloat(btn.dataset.speed);
+        speedBtns.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+      });
     });
     revealBtn.addEventListener('click', function(){
       questions.classList.toggle('show');
